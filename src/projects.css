@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+.main-view {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px auto;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+    120deg,
+    rgb(9, 54, 54) 40.69%,
+    purple 40.19%,
+    red 79.69%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-size: 62px;
+}
+@media only screen and (min-width: 380px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  .main-view {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    margin: 50px auto;
+  }
+}

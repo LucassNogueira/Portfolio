@@ -1,0 +1,32 @@
+export const data = [
+  {
+    project: 1,
+    title: "PogDog",
+    img: "/images/1.png",
+    creation:
+      "PogDog was created in a 10 day sprint during my time at DevMountain coding boot-camp.",
+    tech: "Javascript, HTML, CSS, Express, Node.JS, and Axios.",
+    hosted: "https://pogdog.herokuapp.com/",
+    github: "https://github.com/LucassNogueira/pogdog",
+  },
+  {
+    project: 2,
+    title: "Beautiful Photos",
+    img: "/images/beautifulphotos.png",
+    creation:
+      "Beautiful photos is a online image gallery of what makes you happy. no descriptions, no like button. Simply a photo that makes you happy.",
+    tech: "ReactJS, CSS, FirebaseDB,Framer Motion, Netlify.",
+    hosted: "https://happyphotos.netlify.app/",
+    github: "https://github.com/LucassNogueira/ReactImageGal",
+  },
+  {
+    project: 3,
+    title: "Expense Tracker ",
+    img: "/images/expense.png",
+    creation:
+      "Built a simple intuitive expense tracker to stay on top of your money coming in and out!",
+    tech: "ReactJS, CSS, MongoDB, Morgan, Netlify, Express.",
+    hosted: "https://expencetrackerln.netlify.app/",
+    github: "https://github.com/LucassNogueira/MERNexpenceTracker",
+  },
+];
