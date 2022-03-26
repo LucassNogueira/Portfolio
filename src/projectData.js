@@ -29,4 +29,14 @@ export const data = [
     hosted: "https://expencetrackerln.netlify.app/",
     github: "https://github.com/LucassNogueira/MERNexpenceTracker",
   },
+  {
+    project: 4,
+    title: "E-Commerce Project",
+    img: "/images/onlineStore.png",
+    creation:
+      "This online store was built to further my knowledge on how E-Commerce applications are set up and created.",
+    tech: "ReactJS, Commerce.JS, Stripe, Netlify, MaterialUI.",
+    hosted: "https://onlinestorefront.netlify.app/",
+    github: "https://github.com/LucassNogueira/OnlineStore",
+  },
 ];
