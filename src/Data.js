@@ -1,4 +1,4 @@
-export const data = [
+export const projects = [
   {
     project: 1,
     title: "PogDog",

@@ -79,3 +79,18 @@
     padding-right: 20px;
   }
 }
+.skills {
+  font-size: 35px;
+  background: linear-gradient(
+    120deg,
+    rgb(9, 54, 54) 2.69%,
+    purple 20.19%,
+    red 63.69%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skillsp {
+  width: 75%;
+}
