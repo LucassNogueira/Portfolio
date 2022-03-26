@@ -46,7 +46,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-@media only screen and (min-width: 380px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+@media all and (min-width: 200px) and (max-width: 480px) {
   .content .title {
     font-size: 20px;
     position: absolute;

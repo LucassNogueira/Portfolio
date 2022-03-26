@@ -1,11 +1,11 @@
 import React from "react";
-import "./styles/projects.css";
+import "../styles/projects.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import { projects } from "./Data.js";
+import { projects } from "../components/Data";
 
 const Projects = () => {
   return (

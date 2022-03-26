@@ -1,27 +1,33 @@
 import React from "react";
-import Discord from "./svg/Discord";
-import Bootstrap from "./svg/Bootstrap";
-import CSS from "./svg/CSS";
-import ExpressJSDark from "./svg/ExpressJSDark";
-import "./styles/about.css";
-import Git from "./svg/Git";
-import HTML from "./svg/HTML";
-import JavaScript from "./svg/JavaScript";
-import MaterialUIDark from "./svg/MaterialUIDark";
-import MongoDB from "./svg/MongoDB";
-import NodeJSDark from "./svg/NodeJSDark";
-import Photoshop from "./svg/Photoshop";
-import PostgreSQLDark from "./svg/PostgreSQLDark";
-import ReactDark from "./svg/ReactDark";
-import Redux from "./svg/Redux";
-import TailwindCSSDark from "./svg/TailwindCSSDark";
-import VSCodeDark from "./svg/VSCodeDark";
+import Discord from "../svg/Discord";
+import Bootstrap from "../svg/Bootstrap";
+import CSS from "../svg/CSS";
+import ExpressJSDark from "../svg/ExpressJSDark";
+import "../styles/about.css";
+import Git from "../svg/Git";
+import HTML from "../svg/HTML";
+import JavaScript from "../svg/JavaScript";
+import MaterialUIDark from "../svg/MaterialUIDark";
+import MongoDB from "../svg/MongoDB";
+import NodeJSDark from "../svg/NodeJSDark";
+import Photoshop from "../svg/Photoshop";
+import PostgreSQLDark from "../svg/PostgreSQLDark";
+import ReactDark from "../svg/ReactDark";
+import Redux from "../svg/Redux";
+import TailwindCSSDark from "../svg/TailwindCSSDark";
+import VSCodeDark from "../svg/VSCodeDark";
 
 const About = () => {
   return (
     <main className="main">
       <div className="left">
-        <img alt="self" src="images/head.png" className="self" />
+        <img
+          alt="self"
+          width="300"
+          height="300"
+          src="images/head.png"
+          className="self"
+        />
         <div className="socials">
           <a
             href="https://github.com/LucassNogueira"
@@ -60,22 +66,10 @@ const About = () => {
         </p>
         <h1 className="skills">Skills</h1>
         <div className="skillsp">
-          <ReactDark />
-          <JavaScript />
-          <HTML />
-          <ExpressJSDark />
-          <TailwindCSSDark />
-          <CSS />
-          <NodeJSDark />
-          <Git />
-          <MaterialUIDark />
-          <MongoDB />
-          <VSCodeDark />
-          <PostgreSQLDark />
-          <Photoshop />
-          <Redux />
-          <Bootstrap />
-          <Discord />
+          <ReactDark /> <JavaScript /> <HTML /> <ExpressJSDark />{" "}
+          <TailwindCSSDark /> <CSS /> <NodeJSDark /> <Git /> <MaterialUIDark />{" "}
+          <MongoDB /> <VSCodeDark /> <PostgreSQLDark /> <Photoshop /> <Redux />{" "}
+          <Bootstrap /> <Discord />{" "}
         </div>
       </div>
     </main>

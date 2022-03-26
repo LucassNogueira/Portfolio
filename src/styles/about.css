@@ -28,7 +28,6 @@
   padding-top: 50px;
 }
 .self {
-  width: 50%;
   border-radius: 50%;
 }
 #name {
@@ -60,25 +59,6 @@
   line-height: 30px;
   font-weight: 30;
 }
-@media only screen and (min-width: 380px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: max-content;
-  }
-  .left {
-    height: auto;
-    width: auto;
-  }
-  .right {
-    margin-top: 0;
-    height: auto;
-    width: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
 .skills {
   font-size: 35px;
   background: linear-gradient(
@@ -92,5 +72,34 @@
 }
 
 .skillsp {
-  width: 75%;
+  display: block;
+  gap: 10;
+  width: 80%;
+}
+@media all and (min-width: 200px) and (max-width: 480px) {
+  .main {
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .left {
+    align-items: center;
+    height: auto;
+    width: auto;
+  }
+  .right {
+    text-align: center;
+    display: block;
+    margin-top: 0;
+    height: auto;
+    width: auto;
+  }
+  .aboutp {
+    text-align: center;
+    padding: 15px;
+  }
+  .skillsp {
+    margin: 0 auto;
+    gap: 20px;
+  }
 }
