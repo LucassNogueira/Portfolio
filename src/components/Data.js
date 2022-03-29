@@ -39,4 +39,14 @@ export const projects = [
     hosted: "https://onlinestorefront.netlify.app/",
     github: "https://github.com/LucassNogueira/OnlineStore",
   },
+  {
+    project: 5,
+    title: "Pomodoro Timer",
+    img: "/images/pomotimer.png",
+    creation:
+      "Built a Pomodoro timer in order to help myself not only learn new ways of creating, but study more effectively. ",
+    tech: "ReactJS, Netlify, TailwindCSS.",
+    hosted: "https://texas-timer.netlify.app/",
+    github: "https://github.com/LucassNogueira/pomo-timer",
+  },
 ];
