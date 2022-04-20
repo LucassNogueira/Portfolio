@@ -10,6 +10,16 @@ export const projects = [
     github: "https://github.com/LucassNogueira/pogdog",
   },
   {
+    project: 5,
+    title: "FStop",
+    img: "/images/fstop.png",
+    creation:
+      "Built a Formula1 companion app that users are able to register/login and select favorite drivers,tracks,teams, and compare drivers stats.",
+    tech: "ReactJS, FirebaseDB, TailwindCSS, Firebase Hosting, Sweetalert2, Axios.  ",
+    hosted: "https://fstop-6e18d.web.app/",
+    github: "https://github.com/LucassNogueira/Fstop",
+  },
+  {
     project: 2,
     title: "Beautiful Photos",
     img: "/images/beautifulphotos.png",
@@ -38,15 +48,5 @@ export const projects = [
     tech: "ReactJS, Commerce.JS, Stripe, Netlify, MaterialUI.",
     hosted: "https://onlinestorefront.netlify.app/",
     github: "https://github.com/LucassNogueira/OnlineStore",
-  },
-  {
-    project: 5,
-    title: "Pomodoro Timer",
-    img: "/images/pomotimer.png",
-    creation:
-      "Built a Pomodoro timer in order to help myself not only learn new ways of creating, but study more effectively. ",
-    tech: "ReactJS, Netlify, TailwindCSS.",
-    hosted: "https://texas-timer.netlify.app/",
-    github: "https://github.com/LucassNogueira/pomo-timer",
   },
 ];
