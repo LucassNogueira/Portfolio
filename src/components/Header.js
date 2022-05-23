@@ -28,6 +28,7 @@ const Header = () => {
         <a
           href="https://docs.google.com/document/d/17vuFMQnbQmFx5oOxSw7bTVmCltWY7zM_h4YgiClB77Q/edit?usp=sharing"
           target="_blank"
+          rel="noreferrer"
         >
           Resume
         </a>
