@@ -25,6 +25,14 @@ const Header = () => {
         </Link>
       </li>
       <li>
+        <a
+          href="https://docs.google.com/document/d/17vuFMQnbQmFx5oOxSw7bTVmCltWY7zM_h4YgiClB77Q/edit?usp=sharing"
+          target="_blank"
+        >
+          Resume
+        </a>
+      </li>
+      <li>
         <a href="mailto:howdy@lucasnogueira.dev">Contact</a>
       </li>
     </div>

@@ -52,6 +52,14 @@ const About = () => {
           <h3 id="desc">Software Developer</h3>
           <h3 id="desc">BBM Graduate</h3>
           <h3 id="desc">Pizza Enthusiast</h3>
+          {/* <h3 id="desc">
+            <a
+              href="https://docs.google.com/document/d/17vuFMQnbQmFx5oOxSw7bTVmCltWY7zM_h4YgiClB77Q/edit?usp=sharing"
+              target="_blank"
+            >
+              Resume
+            </a>
+          </h3> */}
         </div>
       </div>
       <div className="right">
