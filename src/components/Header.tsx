@@ -128,8 +128,7 @@ const Header: React.FC = () => {
               {item.external ? (
                 <DrawerLink
                   href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  rel="noopener noreferrer"
                 >
                   {item.label}
                 </DrawerLink>
@@ -167,7 +166,6 @@ const Header: React.FC = () => {
                 <NavLink
                   key={item.label}
                   href={item.href}
-                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   {item.label}

@@ -101,7 +101,7 @@ const Projects: React.FC = () => {
             <Grid item xs={12} sm={6} md={4} key={index}>
               <ProjectCard>
                 <Box>
-                  <ProjectTitle variant="h5" component="div">
+                  <ProjectTitle variant="h5" >
                     {project.title}
                   </ProjectTitle>
                   <CardMedia
