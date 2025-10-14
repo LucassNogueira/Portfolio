@@ -30,7 +30,7 @@ import { ContactFormData } from '@/types'
 const MainContainer = styled(Box)(({ theme }) => ({
   width: '100%',
   padding: '80px 0',
-  backgroundColor: theme.palette.mode === 'light' ? '#f8f9fa' : theme.palette.background.paper,
+  backgroundColor: theme.palette.background.default,
 }))
 
 const SectionHeader = styled(Box)(({ theme }) => ({
