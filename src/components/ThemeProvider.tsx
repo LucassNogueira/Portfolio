@@ -16,14 +16,14 @@ const getTheme = (mode: 'light' | 'dark') => createTheme({
       main: mode === 'light' ? '#1f2937' : '#e5e7eb',
     },
     background: {
-      default: mode === 'light' ? '#f5f5f4' : '#0a0a0a', // Soft warm gray / Deep black
-      paper: mode === 'light' ? '#ffffff' : '#1a1a1a', // White / Dark charcoal
+      default: mode === 'light' ? '#e8e5e1' : '#0a0a0a', // Warm beige-gray / Deep black
+      paper: mode === 'light' ? '#f5f3f0' : '#1a1a1a', // Soft cream / Dark charcoal
     },
     text: {
-      primary: mode === 'light' ? '#111827' : '#f9fafb', // Near black / Off-white
-      secondary: mode === 'light' ? '#6b7280' : '#9ca3af', // Medium gray
+      primary: mode === 'light' ? '#2d2a26' : '#f9fafb', // Warm dark gray / Off-white
+      secondary: mode === 'light' ? '#6b6660' : '#9ca3af', // Muted brown-gray
     },
-    divider: mode === 'light' ? '#d4d4d8' : '#374151', // Slightly darker for visibility on soft background
+    divider: mode === 'light' ? '#cbc6c0' : '#374151', // Warm mid-tone for visibility
   },
   typography: {
     fontFamily: '"Poppins", sans-serif',
