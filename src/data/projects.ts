@@ -8,7 +8,7 @@ export const projects: Project[] = [
     creation:
       "PogDog was created in a 10 day sprint during my time at DevMountain coding boot-camp.",
     tech: "Javascript, HTML, CSS, Express, Node.JS, and Axios.",
-    hosted: "https://pogdog.herokuapp.com/",
+    hosted: "https://pogdog.vercel.app/",
     github: "https://github.com/LucassNogueira/pogdog",
   },
   {
