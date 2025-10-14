@@ -27,7 +27,7 @@ const BackButton = styled(Button)(({ theme }) => ({
 const AllProjectsSection = styled(Box)(({ theme }) => ({
   width: '100%',
   padding: '80px 0',
-  backgroundColor: '#f8f9fa',
+  backgroundColor: theme.palette.background.default,
 }))
 
 const SectionTitle = styled(Typography)(({ theme }) => ({

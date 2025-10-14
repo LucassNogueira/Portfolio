@@ -18,7 +18,7 @@ export const projects: Project[] = [
     creation:
       "Built a Formula1 companion app that users are able to register/login and select favorite drivers,tracks,teams, and compare drivers stats.",
     tech: "ReactJS, FirebaseDB, TailwindCSS, Firebase Hosting, Sweetalert2, Axios.",
-    hosted: "https://fstop-6e18d.web.app/",
+    hosted: "https://fstop-nextjs.vercel.app/",
     github: "https://github.com/LucassNogueira/Fstop",
   },
   {
