@@ -19,6 +19,7 @@ import StackIcon from 'tech-stack-icons'
 import { skillCategories } from '@/data/skills'
 import { experiences } from '@/data/experience'
 import { getIconName } from '@/data/skillsIconMap'
+import { useThemeMode } from '@/lib/themeContext'
 
 const MainContainer = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -216,6 +217,8 @@ const ExperienceText = styled(Typography)(({ theme }) => ({
 }))
 
 const Resume: React.FC = () => {
+  const { mode } = useThemeMode()
+
   return (
     <MainContainer id="resume">
       <Container maxWidth="lg">
@@ -260,7 +263,7 @@ const Resume: React.FC = () => {
                         <SkillItem key={skillIndex}>
                           <IconWrapper>
                             {iconName ? (
-                              <StackIcon name={iconName} />
+                              <StackIcon name={iconName} variant={mode} />
                             ) : (
                               <Typography 
                                 sx={{ 
