@@ -10,7 +10,7 @@ const HeroContainer = styled(Box)(({ theme }) => ({
   width: '100%',
   minHeight: '100vh',
   background: theme.palette.mode === 'light' 
-    ? 'linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%)' 
+    ? 'linear-gradient(135deg, #e8e5e1 0%, #d4cfc7 100%)' 
     : 'linear-gradient(135deg, #0a0a0a 0%, #1f1f1f 100%)',
   display: 'flex',
   alignItems: 'center',
