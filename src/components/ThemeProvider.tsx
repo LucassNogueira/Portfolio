@@ -1,19 +1,29 @@
 'use client'
 
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles'
-import { ReactNode } from 'react'
+import { ReactNode, useMemo } from 'react'
+import { useThemeMode } from '@/lib/themeContext'
 
-const theme = createTheme({
+const getTheme = (mode: 'light' | 'dark') => createTheme({
   palette: {
+    mode,
     primary: {
-      main: '#d42a2a',
+      main: '#dc2626', // Red to match logo
+      light: '#ef4444',
+      dark: '#b91c1c',
     },
     secondary: {
-      main: '#1f1f25',
+      main: mode === 'light' ? '#1f2937' : '#e5e7eb',
     },
     background: {
-      default: '#faf8dd',
+      default: mode === 'light' ? '#ffffff' : '#0a0a0a', // Pure white / Deep black
+      paper: mode === 'light' ? '#f9fafb' : '#1a1a1a', // Light gray / Dark charcoal
     },
+    text: {
+      primary: mode === 'light' ? '#111827' : '#f9fafb', // Near black / Off-white
+      secondary: mode === 'light' ? '#6b7280' : '#9ca3af', // Medium gray
+    },
+    divider: mode === 'light' ? '#e5e7eb' : '#374151',
   },
   typography: {
     fontFamily: '"Poppins", sans-serif',
@@ -21,7 +31,6 @@ const theme = createTheme({
       fontSize: '110px',
       fontWeight: 900,
       lineHeight: '90px',
-      color: '#1f1f25',
     },
     h2: {
       fontSize: '62px',
@@ -68,5 +77,8 @@ interface ThemeProviderProps {
 }
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
+  const { mode } = useThemeMode()
+  const theme = useMemo(() => getTheme(mode), [mode])
+  
   return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
 }

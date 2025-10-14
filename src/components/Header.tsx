@@ -3,6 +3,8 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { Link as ScrollLink } from 'react-scroll'
 import {
   AppBar,
   Toolbar,
@@ -19,7 +21,10 @@ import {
   useTheme,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 import { styled } from '@mui/material/styles'
+import { useThemeMode } from '@/lib/themeContext'
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -28,38 +33,57 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
 }))
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  display: 'flex',
   justifyContent: 'space-between',
-  padding: '0 16px',
-  height: '60px',
+  alignItems: 'center',
+  padding: '8px 16px',
+  minHeight: '64px',
   [theme.breakpoints.up('md')]: {
-    padding: '0 24px',
+    padding: '12px 24px',
+    minHeight: '72px',
   },
 }))
 
 const LogoContainer = styled(Box)(({ theme }) => ({
-  position: 'absolute',
-  left: '2%',
-  top: '12%',
+  display: 'flex',
+  alignItems: 'center',
+  cursor: 'pointer',
+  position: 'relative',
+  flexShrink: 0,
+  '& img': {
+    display: 'block',
+  },
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '160px',
+  },
   [theme.breakpoints.down('sm')]: {
-    left: '4%',
-    top: '8%',
+    maxWidth: '140px',
   },
 }))
 
 const LogoImage = styled(Image)(({ theme }) => ({
+  width: '100%',
+  height: 'auto',
+  maxWidth: '203px',
+  objectFit: 'contain',
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '160px',
+  },
   [theme.breakpoints.down('sm')]: {
-    width: 150,
-    height: 45,
+    maxWidth: '140px',
   },
 }))
 
 const NavContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: '60px',
+  gap: '40px',
   marginLeft: 'auto',
   [theme.breakpoints.down('md')]: {
     display: 'none',
+  },
+  [theme.breakpoints.up('lg')]: {
+    gap: '60px',
   },
 }))
 
@@ -107,16 +131,21 @@ const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
+  const { mode, toggleTheme } = useThemeMode()
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
 
   const navItems = [
-    { label: 'Projects', href: '/projects' },
-    { label: 'About', href: '/about' },
-    { label: 'Resume', href: 'https://docs.google.com/document/d/17vuFMQnbQmFx5oOxSw7bTVmCltWY7zM_h4YgiClB77Q/edit?usp=sharing', external: true },
-    { label: 'Contact', href: 'mailto:howdy@lucasnogueira.dev', external: true },
+    { label: 'Home', scrollId: 'home', href: '/' },
+    { label: 'About', scrollId: 'about', href: '/about' },
+    { label: 'Projects', scrollId: 'projects', href: '/projects' },
+    { label: 'Writing', scrollId: 'blog', href: '/blog' },
+    { label: 'Resume', scrollId: 'resume', href: '/resume' },
+    { label: 'Contact', scrollId: 'contact', href: '/contact' },
   ]
 
   const drawer = (
@@ -125,16 +154,19 @@ const Header: React.FC = () => {
         {navItems.map((item) => (
           <ListItem key={item.label} disablePadding>
             <ListItemButton>
-              {item.external ? (
-                <DrawerLink
-                  href={item.href}
-                  rel="noopener noreferrer"
+              {isHomePage && item.href !== '/' ? (
+                <ScrollLink
+                  to={item.scrollId}
+                  smooth={true}
+                  duration={800}
+                  onClick={() => setMobileOpen(false)}
+                  style={{ width: '100%', cursor: 'pointer' }}
                 >
-                  {item.label}
-                </DrawerLink>
-              ) : (
-                <Link href={item.href} passHref>
                   <DrawerLink>{item.label}</DrawerLink>
+                </ScrollLink>
+              ) : (
+                <Link href={item.href} style={{ width: '100%', textDecoration: 'none' }}>
+                  <DrawerLink onClick={() => setMobileOpen(false)}>{item.label}</DrawerLink>
                 </Link>
               )}
             </ListItemButton>
@@ -149,43 +181,64 @@ const Header: React.FC = () => {
       <Container maxWidth="xl">
         <StyledToolbar>
           <LogoContainer>
-            <Link href="/">
+            <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
               <LogoImage
                 src="/images/capture.png"
                 alt="logo"
                 width={203}
                 height={60}
                 priority
+                style={{ width: 'auto', height: 'auto' }}
               />
             </Link>
           </LogoContainer>
           
           <NavContainer>
             {navItems.map((item) => (
-              item.external ? (
-                <NavLink
+              isHomePage && item.href !== '/' ? (
+                <ScrollLink
                   key={item.label}
-                  href={item.href}
-                  rel="noopener noreferrer"
+                  to={item.scrollId}
+                  smooth={true}
+                  duration={800}
+                  style={{ cursor: 'pointer' }}
                 >
-                  {item.label}
-                </NavLink>
+                  <NavLink>{item.label}</NavLink>
+                </ScrollLink>
               ) : (
-                <Link key={item.label} href={item.href} passHref>
+                <Link key={item.label} href={item.href} style={{ textDecoration: 'none' }}>
                   <NavLink>{item.label}</NavLink>
                 </Link>
               )
             ))}
+            <IconButton
+              onClick={toggleTheme}
+              color="inherit"
+              aria-label="toggle theme"
+              sx={{ ml: 2, color: 'text.primary' }}
+            >
+              {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
           </NavContainer>
 
-          <MobileMenuButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-          >
-            <MenuIcon />
-          </MobileMenuButton>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
+            <IconButton
+              onClick={toggleTheme}
+              color="inherit"
+              aria-label="toggle theme"
+              sx={{ color: 'text.primary' }}
+            >
+              {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+            <MobileMenuButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+            >
+              <MenuIcon />
+            </MobileMenuButton>
+          </Box>
         </StyledToolbar>
       </Container>
 

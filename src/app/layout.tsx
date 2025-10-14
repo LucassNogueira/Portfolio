@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import CssBaseline from '@mui/material/CssBaseline'
 import ThemeProvider from '@/components/ThemeProvider'
+import { ThemeModeProvider } from '@/lib/themeContext'
 import Header from '@/components/Header'
-import './globals.css'
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -11,9 +11,9 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Lucas Nogueira - Software Developer',
-  description: 'Portfolio of Lucas Nogueira, Software Developer and BBM Graduate',
-  keywords: 'software developer, react, nextjs, portfolio, lucas nogueira',
+  title: 'Lucas Nogueira - Web Engineer & Software Developer',
+  description: 'Portfolio of Lucas Nogueira, Web Engineer at Veryable specializing in React, Next.js, and TypeScript. Building scalable solutions for marketplace and workforce management.',
+  keywords: 'web engineer, software developer, react, nextjs, typescript, veryable, dallas, lucas nogueira',
 }
 
 export default function RootLayout({
@@ -24,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <ThemeProvider>
-          <CssBaseline />
-          <Header />
-          {children}
-        </ThemeProvider>
+        <ThemeModeProvider>
+          <ThemeProvider>
+            <CssBaseline />
+            <Header />
+            {children}
+          </ThemeProvider>
+        </ThemeModeProvider>
       </body>
     </html>
   )

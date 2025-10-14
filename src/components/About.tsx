@@ -1,239 +1,178 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import {
   Box,
   Typography,
   Container,
   Grid,
-  Link,
-  IconButton,
+  Paper,
+  Avatar,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import Discord from '@/components/svg/Discord'
-import Bootstrap from '@/components/svg/Bootstrap'
-import CSS from '@/components/svg/CSS'
-import ExpressJSDark from '@/components/svg/ExpressJSDark'
-import Git from '@/components/svg/Git'
-import HTML from '@/components/svg/HTML'
-import JavaScript from '@/components/svg/JavaScript'
-import MaterialUIDark from '@/components/svg/MaterialUIDark'
-import MongoDB from '@/components/svg/MongoDB'
-import NodeJSDark from '@/components/svg/NodeJSDark'
-import Photoshop from '@/components/svg/Photoshop'
-import PostgreSQLDark from '@/components/svg/PostgreSQLDark'
-import ReactDark from '@/components/svg/ReactDark'
-import Redux from '@/components/svg/Redux'
-import TailwindCSSDark from '@/components/svg/TailwindCSSDark'
-import VSCodeDark from '@/components/svg/VSCodeDark'
+import {
+  Code,
+  Palette,
+  Lightbulb,
+  EmojiObjects,
+} from '@mui/icons-material'
 
 const MainContainer = styled(Box)(({ theme }) => ({
-  width: '100vw',
-  minHeight: '90vh',
-  display: 'flex',
-  padding: '60px 0',
+  width: '100%',
+  padding: '80px 0',
+  backgroundColor: theme.palette.background.default,
+}))
+
+const SectionHeader = styled(Box)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: '60px',
+}))
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  fontSize: '48px',
+  fontWeight: 700,
+  color: theme.palette.text.primary,
+  marginBottom: '16px',
   [theme.breakpoints.down('sm')]: {
-    flexDirection: 'column',
-    padding: '20px 0',
+    fontSize: '36px',
   },
 }))
 
-const LeftSection = styled(Box)(({ theme }) => ({
-  width: '25vw',
-  display: 'flex',
-  alignItems: 'center',
-  flexDirection: 'column',
-  marginLeft: 'auto',
-  [theme.breakpoints.down('sm')]: {
-    width: '100%',
-    marginLeft: 0,
-    marginBottom: '40px',
-  },
+const SectionSubtitle = styled(Typography)(({ theme }) => ({
+  fontSize: '18px',
+  color: theme.palette.text.secondary,
+  maxWidth: '600px',
+  margin: '0 auto',
 }))
 
-const RightSection = styled(Box)(({ theme }) => ({
-  width: '50vw',
-  marginRight: 'auto',
-  display: 'flex',
-  flexDirection: 'column',
-  paddingTop: '50px',
-  [theme.breakpoints.down('sm')]: {
-    width: '100%',
-    marginRight: 0,
-    paddingTop: 0,
-    textAlign: 'center',
-  },
-}))
-
-const ProfileImage = styled(Image)({
-  borderRadius: '50%',
-})
-
-const SocialContainer = styled(Box)({
-  display: 'flex',
-  gap: '10px',
-  marginTop: '20px',
-})
-
-const SocialIcon = styled(IconButton)({
-  padding: '8px',
-  '& img': {
-    width: '40px',
-    height: '40px',
-  },
-})
-
-const AboutTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '35px',
-  background: 'linear-gradient(120deg, rgb(9, 54, 54) 2.69%, purple 20.19%, red 63.69%)',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  marginBottom: '20px',
-}))
-
-const SkillsTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '35px',
-  background: 'linear-gradient(120deg, rgb(9, 54, 54) 2.69%, purple 20.19%, red 63.69%)',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  marginTop: '40px',
-  marginBottom: '20px',
-}))
-
-const SkillsContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '10px',
-  width: '80%',
-  [theme.breakpoints.down('sm')]: {
-    justifyContent: 'center',
-    width: '100%',
-  },
+const AboutContent = styled(Box)(({ theme }) => ({
+  marginBottom: '60px',
 }))
 
 const AboutText = styled(Typography)(({ theme }) => ({
-  paddingRight: '50px',
-  lineHeight: '30px',
-  fontWeight: 400,
-  [theme.breakpoints.down('sm')]: {
-    paddingRight: 0,
-    textAlign: 'center',
-    padding: '0 15px',
+  fontSize: '18px',
+  color: theme.palette.text.secondary,
+  lineHeight: '1.8',
+  marginBottom: '24px',
+  textAlign: 'center',
+  maxWidth: '800px',
+  margin: '0 auto 24px auto',
+}))
+
+const ValuesGrid = styled(Grid)(({ theme }) => ({
+  marginTop: '40px',
+}))
+
+const ValueCard = styled(Paper)(({ theme }) => ({
+  padding: '32px',
+  borderRadius: '12px',
+  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+  height: '100%',
+  textAlign: 'center',
+  transition: 'all 0.3s ease-in-out',
+  '&:hover': {
+    transform: 'translateY(-4px)',
+    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
   },
 }))
 
+const IconContainer = styled(Box)(({ theme }) => ({
+  width: '64px',
+  height: '64px',
+  borderRadius: '50%',
+  backgroundColor: theme.palette.primary.main,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  margin: '0 auto 20px auto',
+  color: 'white',
+  '& .MuiSvgIcon-root': {
+    fontSize: '32px',
+  },
+}))
+
+const ValueTitle = styled(Typography)(({ theme }) => ({
+  fontSize: '20px',
+  fontWeight: 600,
+  color: theme.palette.text.primary,
+  marginBottom: '12px',
+}))
+
+const ValueDescription = styled(Typography)(({ theme }) => ({
+  fontSize: '14px',
+  color: theme.palette.text.secondary,
+  lineHeight: '1.6',
+}))
+
 const About: React.FC = () => {
+  const values = [
+    {
+      icon: <Code />,
+      title: 'Clean Code',
+      description: "I write code that's easy to read and maintain. My teammates should be able to understand what I built."
+    },
+    {
+      icon: <Palette />,
+      title: 'Design Focus',
+      description: "Good design matters. If something looks confusing or feels clunky, people won't use it."
+    },
+    {
+      icon: <Lightbulb />,
+      title: 'Problem Solving',
+      description: 'I like figuring out solutions to tricky problems. Sometimes the simple answer is the best one.'
+    },
+    {
+      icon: <EmojiObjects />,
+      title: 'Always Learning',
+      description: "Tech changes fast. I keep up with what's new and figure out what's actually useful."
+    }
+  ]
+
   return (
-    <MainContainer>
-      <Container maxWidth="xl">
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
-            <LeftSection>
-              <ProfileImage
-                alt="Lucas Nogueira"
-                width={300}
-                height={300}
-                src="/images/head.png"
-                priority
-              />
-              <SocialContainer>
-                <Link
-                  href="https://github.com/LucassNogueira"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <SocialIcon>
-                    <Image
-                      alt="GitHub"
-                      src="/images/GitHub-Mark-64px.png"
-                      width={40}
-                      height={40}
-                    />
-                  </SocialIcon>
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/lucas-nogueira-34aa41228/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <SocialIcon>
-                    <Image
-                      alt="LinkedIn"
-                      src="/images/linked.png"
-                      width={40}
-                      height={40}
-                    />
-                  </SocialIcon>
-                </Link>
-                <Link
-                  href="https://www.gptx.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <SocialIcon>
-                    <Image
-                      alt="Texas"
-                      src="/images/texas.png"
-                      width={40}
-                      height={40}
-                    />
-                  </SocialIcon>
-                </Link>
-              </SocialContainer>
-              <Box sx={{ textAlign: 'center', mt: 2 }}>
-                <Typography variant="h3" sx={{ color: '#1f1f25' }}>
-                  Lucas Nogueira
-                </Typography>
-                <Typography variant="h6" sx={{ color: '#1f1f25', mt: 1 }}>
-                  Software Developer
-                </Typography>
-                <Typography variant="h6" sx={{ color: '#1f1f25' }}>
-                  BBM Graduate
-                </Typography>
-                <Typography variant="h6" sx={{ color: '#1f1f25' }}>
-                  Pizza Enthusiast
-                </Typography>
-              </Box>
-            </LeftSection>
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <RightSection>
-              <AboutTitle variant="h3">
-                About Me
-              </AboutTitle>
-              <AboutText variant="body1">
-                My name is Lucas Nogueira, in 2022 I decided to pivot out of a
-                position in a restaurant group where I owned and operated 6 units
-                across the DFW area for 10 years with two partners. Since childhood
-                ive always been interested in computers, either playing video games or
-                building computers for friends. I chose to enroll myself in a coding
-                bootcamp to begin a new career in software development.
-              </AboutText>
-              <SkillsTitle variant="h3">
-                Skills
-              </SkillsTitle>
-              <SkillsContainer>
-                <ReactDark />
-                <JavaScript />
-                <HTML />
-                <ExpressJSDark />
-                <TailwindCSSDark />
-                <CSS />
-                <NodeJSDark />
-                <Git />
-                <MaterialUIDark />
-                <MongoDB />
-                <VSCodeDark />
-                <PostgreSQLDark />
-                <Photoshop />
-                <Redux />
-                <Bootstrap />
-                <Discord />
-              </SkillsContainer>
-            </RightSection>
-          </Grid>
-        </Grid>
+    <MainContainer id="about">
+      <Container maxWidth="lg">
+        <SectionHeader>
+          <SectionTitle variant="h2">
+            About Me
+          </SectionTitle>
+        <AboutContent>
+          <AboutText>
+            Hey, I'm Lucas! I'm a web engineer at Veryable in Dallas, building tools that help 
+            businesses manage their workforce more efficiently. I work mostly with React, TypeScript, 
+            and Next.js to create features that people actually use every day.
+          </AboutText>
+          <AboutText>
+            Before getting into tech, I ran eight restaurants for about ten years. It was chaotic, 
+            rewarding, and taught me a ton about solving real problems under pressure. That experience 
+            completely changed how I think about building software. Running those restaurants made me appreciate simple, reliable 
+            tools that just work when you need them. The same principles i apply to building software today!
+          </AboutText>
+          <AboutText>
+            I got into coding through DevMountain's bootcamp in 2022, and honestly haven't looked back. 
+            I love the puzzle-solving aspect of engineering and the satisfaction of shipping something 
+            that makes a difference. When I'm not coding, you'll probably find me exploring Dallas, 
+            trying out new restaurants (old habits), or picking up yet an other new hobby! 
+          </AboutText>
+          </AboutContent>
+        </SectionHeader>
+
+        <ValuesGrid container spacing={4}>
+          {values.map((value, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <ValueCard>
+                <IconContainer>
+                  {value.icon}
+                </IconContainer>
+                <ValueTitle variant="h6">
+                  {value.title}
+                </ValueTitle>
+                <ValueDescription>
+                  {value.description}
+                </ValueDescription>
+              </ValueCard>
+            </Grid>
+          ))}
+        </ValuesGrid>
       </Container>
     </MainContainer>
   )
