@@ -28,7 +28,7 @@ export const projects: Project[] = [
     creation:
       "Beautiful photos is a online image gallery of what makes you happy. no descriptions, no like button. Simply a photo that makes you happy.",
     tech: "ReactJS, CSS, FirebaseDB,Framer Motion, Netlify.",
-    hosted: "https://happyphotos.netlify.app/",
+    hosted: "https://beautifulphotos.vercel.app/",
     github: "https://github.com/LucassNogueira/ReactImageGal",
   },
   {
