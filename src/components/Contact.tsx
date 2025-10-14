@@ -110,7 +110,7 @@ const SocialLinks = styled(Box)(({ theme }) => ({
   marginTop: '32px',
 }))
 
-const SocialButton = styled(IconButton)(({ theme }) => ({
+const SocialButton = styled(IconButton)<{ component?: React.ElementType; href?: string; target?: string; rel?: string }>(({ theme }) => ({
   width: '48px',
   height: '48px',
   backgroundColor: theme.palette.primary.main,
@@ -201,7 +201,7 @@ const Contact: React.FC = () => {
             Get in Touch
           </SectionTitle>
           <SectionSubtitle>
-            Have a project in mind or want to collaborate? I'd love to hear from you.
+            Have a project in mind or want to collaborate? I&apos;d love to hear from you.
           </SectionSubtitle>
         </SectionHeader>
 
@@ -231,10 +231,10 @@ const Contact: React.FC = () => {
               </ContactItem>
 
               <SocialLinks>
-                <SocialButton href="https://www.linkedin.com/in/lucas-nogueira-34aa41228/" target="_blank" rel="noopener noreferrer">
+                <SocialButton component="a" href="https://www.linkedin.com/in/lucas-nogueira-34aa41228/" target="_blank" rel="noopener noreferrer">
                   <LinkedIn />
                 </SocialButton>
-                <SocialButton href="https://github.com/LucassNogueira" target="_blank" rel="noopener noreferrer">
+                <SocialButton component="a" href="https://github.com/LucassNogueira" target="_blank" rel="noopener noreferrer">
                   <GitHub />
                 </SocialButton>
               </SocialLinks>

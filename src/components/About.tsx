@@ -137,7 +137,7 @@ const About: React.FC = () => {
           </SectionTitle>
         <AboutContent>
           <AboutText>
-            Hey, I'm Lucas! I'm a web engineer at Veryable in Dallas, building tools that help 
+            Hey, I&apos;m Lucas! I&apos;m a web engineer at Veryable in Dallas, building tools that help 
             businesses manage their workforce more efficiently. I work mostly with React, TypeScript, 
             and Next.js to create features that people actually use every day.
           </AboutText>
@@ -148,9 +148,9 @@ const About: React.FC = () => {
             tools that just work when you need them. The same principles i apply to building software today!
           </AboutText>
           <AboutText>
-            I got into coding through DevMountain's bootcamp in 2022, and honestly haven't looked back. 
+            I got into coding through DevMountain&apos;s bootcamp in 2022, and honestly haven&apos;t looked back. 
             I love the puzzle-solving aspect of engineering and the satisfaction of shipping something 
-            that makes a difference. When I'm not coding, you'll probably find me exploring Dallas, 
+            that makes a difference. When I&apos;m not coding, you&apos;ll probably find me exploring Dallas, 
             trying out new restaurants (old habits), or picking up yet an other new hobby! 
           </AboutText>
           </AboutContent>
