@@ -107,7 +107,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     category: data.category,
     date: data.date,
     readTime: data.read_time,
-    slug: data.slug
+    slug: data.slug,
+    content: data.content || '' // Include markdown content
   }
 }
 

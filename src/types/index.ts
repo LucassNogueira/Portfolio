@@ -21,6 +21,7 @@ export interface BlogPost {
   date: string
   readTime: string
   slug: string
+  content?: string // Optional markdown content
 }
 
 export interface SkillCategory {

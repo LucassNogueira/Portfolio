@@ -43,9 +43,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // For now, use placeholder content since Edge Runtime doesn't support fs
-  // TODO: Store markdown content in Supabase or fetch from a CDN
-  const content = `# ${post.title}
+  // Use content from Supabase, or fallback to placeholder
+  const content = post.content || `# ${post.title}
 
 ${post.excerpt}
 

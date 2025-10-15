@@ -247,16 +247,29 @@ async function populateProjects() {
 }
 
 async function populateBlogPosts() {
-  console.log('\n📝 Populating blog posts table...')
+  console.log('\n📝 Populating blog posts table with content...')
   
   for (const post of blogPostsData) {
+    // Read markdown content from file
+    const markdownPath = join(process.cwd(), 'src', 'content', 'blog', `${post.slug}.md`)
+    let content = ''
+    
+    try {
+      content = readFileSync(markdownPath, 'utf-8')
+      console.log(`📖 Read markdown content for "${post.title}"`)
+    } catch (error) {
+      console.warn(`⚠️  Could not read markdown file for "${post.title}" at ${markdownPath}`)
+      content = '' // Use empty string if file doesn't exist
+    }
+    
     const { error } = await supabase.from('blog_posts').insert({
       title: post.title,
       excerpt: post.excerpt,
       category: post.category,
       date: post.date,
       read_time: post.readTime,
-      slug: post.slug
+      slug: post.slug,
+      content: content
     })
     
     if (error) {
@@ -266,7 +279,7 @@ async function populateBlogPosts() {
         console.error(`❌ Error inserting "${post.title}":`, error.message)
       }
     } else {
-      console.log(`✅ Inserted blog post: ${post.title}`)
+      console.log(`✅ Inserted blog post with content: ${post.title}`)
     }
   }
 }
