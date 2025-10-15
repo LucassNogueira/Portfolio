@@ -5,6 +5,6 @@
  */
 
 export { useProjects, useProjectsData } from './useProjects'
-export { useBlogPosts, useBlogPostsData } from './useBlogPosts'
+export { useBlogPosts, useBlogPostsData, useBlogPost } from './useBlogPosts'
 export { useSkills, useSkillsData } from './useSkills'
 export { useExperiences, useExperiencesData } from './useExperiences'

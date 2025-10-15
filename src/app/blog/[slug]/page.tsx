@@ -1,46 +1,37 @@
-import { notFound } from 'next/navigation';
-import { BlogPostContent } from '@/components/BlogPostContent';
-import { fetchBlogPosts, fetchBlogPostBySlug } from '@/data/blogPosts';
-import { Metadata } from 'next';
+'use client'
 
-export const runtime = 'edge';
+import { useParams } from 'next/navigation'
+import { Box, Container, Typography, CircularProgress } from '@mui/material'
+import { BlogPostContent } from '@/components/BlogPostContent'
+import { useBlogPost } from '@/hooks'
 
-interface BlogPostPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
-}
+export default function BlogPostPage() {
+  const params = useParams()
+  const slug = params.slug as string
+  const { data: post, isLoading, error } = useBlogPost(slug)
 
-export async function generateStaticParams() {
-  const blogPosts = await fetchBlogPosts();
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await fetchBlogPostBySlug(slug);
-
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    };
+  if (isLoading) {
+    return (
+      <Container maxWidth="md" sx={{ py: 8, textAlign: 'center' }}>
+        <CircularProgress />
+        <Typography variant="body1" sx={{ mt: 2 }}>
+          Loading blog post...
+        </Typography>
+      </Container>
+    )
   }
 
-  return {
-    title: `${post.title} | Lucas Nogueira`,
-    description: post.excerpt,
-    keywords: `${post.category}, react, typescript, web development, lucas nogueira`,
-  };
-}
-
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params;
-  const post = await fetchBlogPostBySlug(slug);
-
-  if (!post) {
-    notFound();
+  if (error || !post) {
+    return (
+      <Container maxWidth="md" sx={{ py: 8, textAlign: 'center' }}>
+        <Typography variant="h4" gutterBottom>
+          Post Not Found
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+          The blog post you're looking for doesn't exist.
+        </Typography>
+      </Container>
+    )
   }
 
   // Use content from Supabase, or fallback to placeholder
@@ -48,7 +39,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
 ${post.excerpt}
 
-This is a placeholder for the blog post content. The full content will be added soon.`;
+This is a placeholder for the blog post content. The full content will be added soon.`
 
-  return <BlogPostContent post={post} content={content} />;
+  return <BlogPostContent post={post} content={content} />
 }
