@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
 import { notFound } from 'next/navigation';
 import { BlogPostContent } from '@/components/BlogPostContent';
 import { fetchBlogPosts, fetchBlogPostBySlug } from '@/data/blogPosts';
 import { Metadata } from 'next';
+
+export const runtime = 'edge';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -43,16 +43,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Read the markdown file
-  const filePath = path.join(process.cwd(), 'src/content/blog', `${slug}.md`);
-  
-  let content = '';
-  try {
-    content = fs.readFileSync(filePath, 'utf-8');
-  } catch (error) {
-    // If markdown file doesn't exist, return empty content
-    content = '# Content Coming Soon\n\nThis blog post is being prepared.'
-  }
+  // For now, use placeholder content since Edge Runtime doesn't support fs
+  // TODO: Store markdown content in Supabase or fetch from a CDN
+  const content = `# ${post.title}
+
+${post.excerpt}
+
+This is a placeholder for the blog post content. The full content will be added soon.`;
 
   return <BlogPostContent post={post} content={content} />;
 }
