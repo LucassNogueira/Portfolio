@@ -10,6 +10,11 @@ import { Project, BlogPost, SkillCategory, Experience } from '@/types'
  * Fetch all projects from Supabase
  */
 export async function getProjects(): Promise<Project[]> {
+  if (!supabase) {
+    console.warn('Supabase not initialized, returning empty array')
+    return []
+  }
+
   const { data, error } = await supabase
     .from('projects')
     .select('*')
@@ -24,7 +29,7 @@ export async function getProjects(): Promise<Project[]> {
   if (!data) return []
 
   // Transform database format to app format
-  return data.map(project => ({
+  return data.map((project: any) => ({
     project: project.project_number,
     title: project.title,
     img: getImageUrl(project.image_path.replace('/images/', 'images/')),
@@ -39,6 +44,11 @@ export async function getProjects(): Promise<Project[]> {
  * Fetch all blog posts from Supabase
  */
 export async function getBlogPosts(): Promise<BlogPost[]> {
+  if (!supabase) {
+    console.warn('Supabase not initialized, returning empty array')
+    return []
+  }
+
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
@@ -53,7 +63,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   if (!data) return []
 
   // Transform database format to app format
-  return data.map(post => ({
+  return data.map((post: any) => ({
     id: post.id,
     title: post.title,
     excerpt: post.excerpt,
@@ -68,6 +78,11 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
  * Fetch a single blog post by slug
  */
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  if (!supabase) {
+    console.warn('Supabase not initialized, returning null')
+    return null
+  }
+
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
@@ -100,6 +115,11 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
  * Fetch all skills grouped by category
  */
 export async function getSkills(): Promise<SkillCategory[]> {
+  if (!supabase) {
+    console.warn('Supabase not initialized, returning empty array')
+    return []
+  }
+
   const { data, error } = await supabase
     .from('skills')
     .select('*')
@@ -116,7 +136,7 @@ export async function getSkills(): Promise<SkillCategory[]> {
   // Group skills by category and deduplicate
   const categoriesMap = new Map<string, Set<string>>()
   
-  data.forEach(skill => {
+  data.forEach((skill: any) => {
     if (!categoriesMap.has(skill.category)) {
       categoriesMap.set(skill.category, new Set())
     }
@@ -134,6 +154,11 @@ export async function getSkills(): Promise<SkillCategory[]> {
  * Fetch all work experiences
  */
 export async function getExperiences(): Promise<Experience[]> {
+  if (!supabase) {
+    console.warn('Supabase not initialized, returning empty array')
+    return []
+  }
+
   const { data, error } = await supabase
     .from('experiences')
     .select('*')
@@ -147,7 +172,7 @@ export async function getExperiences(): Promise<Experience[]> {
 
   if (!data) return []
 
-  return data.map(exp => ({
+  return data.map((exp: any) => ({
     title: exp.title,
     company: exp.company,
     period: exp.period,
