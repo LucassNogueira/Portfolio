@@ -1,0 +1,13 @@
+name = "portfolio"
+compatibility_date = "2025-10-15"
+pages_build_output_dir = ".vercel/output/static"
+
+# Uncomment the following to enable Node.js compatibility mode
+# compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+name = "portfolio"
+
+[env.preview]
+name = "portfolio-preview"
+
