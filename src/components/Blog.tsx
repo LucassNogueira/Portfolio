@@ -13,7 +13,7 @@ import {
   Chip,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { blogPosts } from '@/data/blogPosts'
+import { useBlogPosts } from '@/hooks'
 
 const MainContainer = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -161,6 +161,20 @@ const ViewAllButton = styled(Button)(({ theme }) => ({
 }))
 
 const Blog: React.FC = () => {
+  const { data: blogPosts = [], isLoading } = useBlogPosts()
+
+  if (isLoading) {
+    return (
+      <MainContainer id="blog">
+        <Container maxWidth="lg">
+          <SectionHeader>
+            <SectionTitle variant="h2">Loading Posts...</SectionTitle>
+          </SectionHeader>
+        </Container>
+      </MainContainer>
+    )
+  }
+
   return (
     <MainContainer id="blog">
       <Container maxWidth="lg">

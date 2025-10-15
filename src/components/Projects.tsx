@@ -16,7 +16,7 @@ import {
   Stack,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { projects } from '@/data/projects'
+import { useProjects } from '@/hooks'
 
 const MainContainer = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -146,8 +146,22 @@ const ViewAllButton = styled(Button)(({ theme }) => ({
 }))
 
 const Projects: React.FC = () => {
+  const { data: projects = [], isLoading } = useProjects()
+
   const getTechArray = (techString: string) => {
     return techString.split(',').map(tech => tech.trim()).slice(0, 5)
+  }
+
+  if (isLoading) {
+    return (
+      <MainContainer id="projects">
+        <Container maxWidth="lg">
+          <SectionHeader>
+            <SectionTitle variant="h2">Loading Projects...</SectionTitle>
+          </SectionHeader>
+        </Container>
+      </MainContainer>
+    )
   }
 
   return (
@@ -196,16 +210,14 @@ const Projects: React.FC = () => {
                   <ActionButton
                     className="primary"
                     variant="contained"
-                    href={project.hosted}
-                    rel="noopener noreferrer"
+                    onClick={() => window.open(project.hosted, '_blank', 'noopener,noreferrer')}
                   >
                     Live Demo
                   </ActionButton>
                   <ActionButton
                     className="secondary"
                     variant="outlined"
-                    href={project.github}
-                    rel="noopener noreferrer"
+                    onClick={() => window.open(project.github, '_blank', 'noopener,noreferrer')}
                   >
                     Code
                   </ActionButton>

@@ -20,6 +20,7 @@
 .docs/
 .dev-notes/
 .next/
+public/images/
 
 # IDE
 .vscode/

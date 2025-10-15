@@ -6,7 +6,7 @@ import { Box, Button, Container, Grid, Card, CardContent, CardMedia, CardActions
 import { styled } from '@mui/material/styles'
 import Link from 'next/link'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { projects } from '@/data/projects'
+import { useProjects } from '@/hooks'
 
 const BackButtonContainer = styled(Box)(({ theme }) => ({
   padding: '20px 0',
@@ -85,6 +85,8 @@ const ActionButton = styled(Button)(({ theme }) => ({
 }))
 
 export default function ProjectsPage() {
+  const { data: projects = [] } = useProjects()
+
   const getTechArray = (techString: string) => {
     return techString.split(',').map(tech => tech.trim())
   }
@@ -137,26 +139,18 @@ export default function ProjectsPage() {
                     </Box>
                   </CardContent>
                   <CardActions sx={{ padding: '16px', gap: '8px' }}>
-                    <a
-                      href={project.hosted}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ textDecoration: 'none' }}
+                    <ActionButton 
+                      variant="contained"
+                      onClick={() => window.open(project.hosted, '_blank', 'noopener,noreferrer')}
                     >
-                      <ActionButton variant="contained">
-                        Live Demo
-                      </ActionButton>
-                    </a>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ textDecoration: 'none' }}
+                      Live Demo
+                    </ActionButton>
+                    <ActionButton 
+                      variant="outlined"
+                      onClick={() => window.open(project.github, '_blank', 'noopener,noreferrer')}
                     >
-                      <ActionButton variant="outlined">
-                        Code
-                      </ActionButton>
-                    </a>
+                      Code
+                    </ActionButton>
                   </CardActions>
                 </ProjectCard>
               </Grid>

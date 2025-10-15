@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import CssBaseline from '@mui/material/CssBaseline'
 import ThemeProvider from '@/components/ThemeProvider'
 import { ThemeModeProvider } from '@/lib/themeContext'
+import { QueryProvider } from '@/lib/queryClient'
 import Header from '@/components/Header'
 
 const poppins = Poppins({ 
@@ -24,13 +25,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <ThemeModeProvider>
-          <ThemeProvider>
-            <CssBaseline />
-            <Header />
-            {children}
-          </ThemeProvider>
-        </ThemeModeProvider>
+        <QueryProvider>
+          <ThemeModeProvider>
+            <ThemeProvider>
+              <CssBaseline />
+              <Header />
+              {children}
+            </ThemeProvider>
+          </ThemeModeProvider>
+        </QueryProvider>
       </body>
     </html>
   )

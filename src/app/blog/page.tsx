@@ -6,7 +6,7 @@ import { Box, Button, Container, Grid, Card, CardContent, Chip, Typography } fro
 import { styled } from '@mui/material/styles'
 import Link from 'next/link'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { blogPosts } from '@/data/blogPosts'
+import { useBlogPosts } from '@/hooks'
 
 const BackButtonContainer = styled(Box)(({ theme }) => ({
   padding: '20px 0',
@@ -124,6 +124,16 @@ const ReadMoreLink = styled('span')(({ theme }) => ({
 }))
 
 export default function BlogPage() {
+  const { data: blogPosts = [], isLoading } = useBlogPosts()
+
+  if (isLoading) {
+    return (
+      <Box sx={{ textAlign: 'center', py: 10 }}>
+        <Typography variant="h4">Loading...</Typography>
+      </Box>
+    )
+  }
+
   return (
     <>
       <BackButtonContainer>

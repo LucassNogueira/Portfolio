@@ -16,9 +16,8 @@ import {
 import DownloadIcon from '@mui/icons-material/Download'
 import { styled } from '@mui/material/styles'
 import StackIcon from 'tech-stack-icons'
-import { skillCategories } from '@/data/skills'
-import { experiences } from '@/data/experience'
-import { getIconName } from '@/data/skillsIconMap'
+import { useSkills, useExperiences } from '@/hooks'
+import { getIconName } from '@/app/utils/skillsIconMap'
 import { useThemeMode } from '@/lib/themeContext'
 
 const MainContainer = styled(Box)(({ theme }) => ({
@@ -218,6 +217,22 @@ const ExperienceText = styled(Typography)(({ theme }) => ({
 
 const Resume: React.FC = () => {
   const { mode } = useThemeMode()
+  const { data: skillCategories = [], isLoading: skillsLoading } = useSkills()
+  const { data: experiences = [], isLoading: experiencesLoading } = useExperiences()
+
+  const isLoading = skillsLoading || experiencesLoading
+
+  if (isLoading) {
+    return (
+      <MainContainer id="resume">
+        <Container maxWidth="lg">
+          <SectionHeader>
+            <SectionTitle variant="h2">Loading...</SectionTitle>
+          </SectionHeader>
+        </Container>
+      </MainContainer>
+    )
+  }
 
   return (
     <MainContainer id="resume">
