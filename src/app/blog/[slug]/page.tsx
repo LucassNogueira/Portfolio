@@ -1,5 +1,7 @@
 'use client'
 
+export const runtime = 'edge'
+
 import { useParams } from 'next/navigation'
 import { Box, Container, Typography, CircularProgress } from '@mui/material'
 import { BlogPostContent } from '@/components/BlogPostContent'
@@ -28,7 +30,7 @@ export default function BlogPostPage() {
           Post Not Found
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          The blog post you're looking for doesn't exist.
+          The blog post you&apos;re looking for doesn&apos;t exist.
         </Typography>
       </Container>
     )
