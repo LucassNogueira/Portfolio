@@ -1,7 +1,5 @@
 'use client'
 
-export const runtime = 'edge'
-
 import { useParams } from 'next/navigation'
 import { Box, Container, Typography, CircularProgress } from '@mui/material'
 import { BlogPostContent } from '@/components/BlogPostContent'

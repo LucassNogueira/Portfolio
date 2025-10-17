@@ -45,7 +45,9 @@ export async function getProjects(): Promise<Project[]> {
  */
 export async function getBlogPosts(): Promise<BlogPost[]> {
   if (!supabase) {
-    console.warn('Supabase not initialized, returning empty array')
+    console.error('❌ Supabase client not initialized - check environment variables')
+    console.error('NEXT_PUBLIC_SUPABASE_URL:', process.env.NEXT_PUBLIC_SUPABASE_URL ? 'SET' : 'MISSING')
+    console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'SET' : 'MISSING')
     return []
   }
 
@@ -55,12 +57,17 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     .order('date', { ascending: false })
 
   if (error) {
-    console.error('Error fetching blog posts:', error.message)
+    console.error('❌ Error fetching blog posts:', error.message, error)
     // Return empty array if table doesn't exist yet
     return []
   }
 
-  if (!data) return []
+  if (!data) {
+    console.warn('⚠️ No blog posts data returned from Supabase')
+    return []
+  }
+
+  console.log('✅ Successfully fetched', data.length, 'blog posts')
 
   // Transform database format to app format
   return data.map((post: any) => ({
@@ -117,7 +124,9 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
  */
 export async function getSkills(): Promise<SkillCategory[]> {
   if (!supabase) {
-    console.warn('Supabase not initialized, returning empty array')
+    console.error('❌ Supabase client not initialized - check environment variables')
+    console.error('NEXT_PUBLIC_SUPABASE_URL:', process.env.NEXT_PUBLIC_SUPABASE_URL ? 'SET' : 'MISSING')
+    console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'SET' : 'MISSING')
     return []
   }
 
@@ -127,12 +136,17 @@ export async function getSkills(): Promise<SkillCategory[]> {
     .order('category', { ascending: true })
 
   if (error) {
-    console.error('Error fetching skills:', error.message)
+    console.error('❌ Error fetching skills:', error.message, error)
     // Return empty array if table doesn't exist yet
     return []
   }
 
-  if (!data) return []
+  if (!data) {
+    console.warn('⚠️ No skills data returned from Supabase')
+    return []
+  }
+
+  console.log('✅ Successfully fetched', data.length, 'skills')
 
   // Group skills by category and deduplicate
   const categoriesMap = new Map<string, Set<string>>()
@@ -145,10 +159,14 @@ export async function getSkills(): Promise<SkillCategory[]> {
   })
 
   // Convert to array format with deduplication
-  return Array.from(categoriesMap.entries()).map(([name, skillsSet]) => ({
+  const result = Array.from(categoriesMap.entries()).map(([name, skillsSet]) => ({
     name,
     skills: Array.from(skillsSet)
   }))
+
+  console.log('✅ Grouped into', result.length, 'skill categories')
+
+  return result
 }
 
 /**
