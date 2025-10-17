@@ -5,6 +5,7 @@ import Blog from '@/components/Blog'
 import Resume from '@/components/Resume'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
+import DebugPanel from '@/components/DebugPanel'
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
       <Resume />
       <Contact />
       <Footer />
+      <DebugPanel />
     </>
   )
 }
