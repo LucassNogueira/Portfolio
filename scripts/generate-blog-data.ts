@@ -58,7 +58,8 @@ const BLOG_POSTS: BlogPostData[] = [
     "category": "Development",
     "date": "Oct 17, 2025",
     "readTime": "6 min read",
-    "slug": "jotai-lightweight-state-management"
+    "slug": "jotai-lightweight-state-management",
+    "content": ""
   }
 ];
 
