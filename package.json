@@ -49,7 +49,8 @@
     "deploy": "npm run pages:build && wrangler pages deploy",
     "start": "next start",
     "lint": "next lint",
-    "migrate:supabase": "tsx supabase/migrations/scripts/migrate-to-supabase.ts"
+    "migrate:supabase": "tsx supabase/migrations/scripts/migrate-to-supabase.ts",
+    "sync:blog": "tsx scripts/sync-blog-posts.ts"
   },
   "eslintConfig": {
     "extends": [
