@@ -41,9 +41,10 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "pages:build": "./build-with-env.sh",
-    "pages:build:win": "npx @cloudflare/next-on-pages",
+    "build": "npm run generate:blog && next build",
+    "generate:blog": "tsx scripts/generate-blog-data.ts",
+    "pages:build": "npm run generate:blog && ./build-with-env.sh",
+    "pages:build:win": "npm run generate:blog && npx @cloudflare/next-on-pages",
     "preview": "npm run pages:build && wrangler pages dev",
     "deploy": "npm run pages:build && wrangler pages deploy",
     "start": "next start",

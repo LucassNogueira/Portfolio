@@ -1,16 +1,29 @@
 /**
  * Blog Posts Data
- * Server-side data fetching for blog posts
+ * Content is bundled at build time from markdown files
  */
 
 import { BlogPost } from '@/types'
-import { getBlogPosts, getBlogPostBySlug } from '@/lib/supabase-api'
+import blogContent from './blogContent.json'
 
-export async function fetchBlogPosts(): Promise<BlogPost[]> {
-  return getBlogPosts()
+// Type assertion for the imported JSON
+const typedBlogContent = blogContent as (BlogPost & { content: string })[]
+
+export function getBlogPosts(): BlogPost[] {
+  // Return metadata only (without full content)
+  return typedBlogContent.map(({ id, title, excerpt, category, date, readTime, slug }) => ({
+    id,
+    title,
+    excerpt,
+    category,
+    date,
+    readTime,
+    slug,
+  }))
 }
 
-export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-  return getBlogPostBySlug(slug)
+export function getBlogPostBySlug(slug: string): (BlogPost & { content: string }) | null {
+  const post = typedBlogContent.find(p => p.slug === slug)
+  return post || null
 }
 

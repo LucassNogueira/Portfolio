@@ -1,20 +1,23 @@
 /**
  * useBlogPosts Hook
  * 
- * Fetches blog posts data from Supabase using React Query
+ * Returns blog posts data (bundled at build time, no API calls needed)
  */
 
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
 import { BlogPost } from '@/types'
-import { getBlogPosts, getBlogPostBySlug } from '@/lib/supabase-api'
+import { getBlogPosts, getBlogPostBySlug } from '@/data/blogPosts'
 
 export const useBlogPosts = () => {
-  return useQuery({
-    queryKey: ['blogPosts'],
-    queryFn: getBlogPosts,
-  })
+  const data = useMemo(() => getBlogPosts(), [])
+  
+  return {
+    data,
+    isLoading: false,
+    error: null,
+  }
 }
 
 // Export with typed data for convenience
@@ -25,9 +28,11 @@ export const useBlogPostsData = () => {
 
 // Hook for fetching a single blog post by slug
 export const useBlogPost = (slug: string) => {
-  return useQuery({
-    queryKey: ['blogPost', slug],
-    queryFn: () => getBlogPostBySlug(slug),
-    enabled: !!slug, // Only run query if slug exists
-  })
+  const data = useMemo(() => getBlogPostBySlug(slug), [slug])
+  
+  return {
+    data,
+    isLoading: false,
+    error: data ? null : new Error('Post not found'),
+  }
 }
