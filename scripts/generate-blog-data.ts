@@ -22,41 +22,51 @@ interface BlogPostData {
 
 const BLOG_POSTS: BlogPostData[] = [
   {
-    id: 1,
-    title: 'nuqs + React Hooks: Managing Modal State Without Losing Your Mind',
-    excerpt: 'Managing modal state across components is painful. Learn how using nuqs and custom hooks makes it dead simple - no prop drilling, no context, just URL-based state that works everywhere.',
-    category: 'React',
-    date: 'Oct 11, 2024',
-    readTime: '6 min read',
-    slug: 'nuqs-modal-state-hooks',
-    content: '',
+    "id": 1,
+    "title": "nuqs + React Hooks: Managing Modal State Without Losing Your Mind",
+    "excerpt": "Managing modal state across components is painful. Learn how using nuqs and custom hooks makes it dead simple - no prop drilling, no context, just URL-based state that works everywhere.",
+    "category": "React",
+    "date": "Oct 11, 2024",
+    "readTime": "6 min read",
+    "slug": "nuqs-modal-state-hooks",
+    "content": ""
   },
   {
-    id: 2,
-    title: 'Building Features Before the Backend Exists (makeMockApiCall)',
-    excerpt: 'Stop waiting for backend APIs. Build complete features with realistic mock data, test all edge cases, and swap in the real API later. Here\'s the utility that changed my workflow.',
-    category: 'Development',
-    date: 'Oct 11, 2024',
-    readTime: '8 min read',
-    slug: 'make-mock-api-call-utility',
-    content: '',
+    "id": 2,
+    "title": "Building Features Before the Backend Exists (makeMockApiCall)",
+    "excerpt": "Stop waiting for backend APIs. Build complete features with realistic mock data, test all edge cases, and swap in the real API later. Here's the utility that changed my workflow.",
+    "category": "Development",
+    "date": "Oct 11, 2024",
+    "readTime": "8 min read",
+    "slug": "make-mock-api-call-utility",
+    "content": ""
   },
   {
-    id: 3,
-    title: 'Toast Notifications: Just Call It From Anywhere',
-    excerpt: 'No context, no providers, no prop drilling. A toast notification utility you can import and call from anywhere in your app - components, hooks, utilities, or server actions.',
-    category: 'React',
-    date: 'Oct 11, 2024',
-    readTime: '9 min read',
-    slug: 'toast-notifications-everywhere',
-    content: '',
+    "id": 3,
+    "title": "Toast Notifications: Just Call It From Anywhere",
+    "excerpt": "No context, no providers, no prop drilling. A toast notification utility you can import and call from anywhere in your app - components, hooks, utilities, or server actions.",
+    "category": "React",
+    "date": "Oct 11, 2024",
+    "readTime": "9 min read",
+    "slug": "toast-notifications-everywhere",
+    "content": ""
   },
+  {
+    "id": 4,
+    "title": "Jotai: When Redux is Overkill and Context is Too Much Work",
+    "excerpt": "Sometimes features dont need to be coupled to Redux. Nobody likes having to deal with boiler plate.",
+    "category": "Development",
+    "date": "Oct 17, 2025",
+    "readTime": "6 min read",
+    "slug": "jotai-lightweight-state-management"
+  }
 ];
 
 const BLOG_FILES: Record<string, string> = {
-  'nuqs-modal-state-hooks': 'nuqs-modal-state-hooks.md',
-  'make-mock-api-call-utility': 'make-mock-api-call-utility.md',
-  'toast-notifications-everywhere': 'toast-notifications-everywhere.md',
+  "nuqs-modal-state-hooks": "nuqs-modal-state-hooks.md",
+  "make-mock-api-call-utility": "make-mock-api-call-utility.md",
+  "toast-notifications-everywhere": "toast-notifications-everywhere.md",
+  "jotai-lightweight-state-management": "jotai-lightweight-state-management.md"
 };
 
 async function generateBlogData() {
@@ -91,4 +101,3 @@ async function generateBlogData() {
 }
 
 generateBlogData().catch(console.error);
-
