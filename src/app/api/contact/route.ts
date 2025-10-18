@@ -8,11 +8,8 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, email, subject, message } = body;
 
-    console.log('📧 Received contact form submission:', { name, email, subject });
-
     // Validate required fields
     if (!name || !email || !subject || !message) {
-      console.error('❌ Missing required fields');
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
@@ -22,10 +19,8 @@ export async function POST(request: NextRequest) {
     // Use Resend to send email
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
     
-    console.log('🔑 API Key exists:', !!RESEND_API_KEY);
-    
     if (!RESEND_API_KEY) {
-      console.error('❌ RESEND_API_KEY is not configured');
+      console.error('RESEND_API_KEY is not configured');
       return NextResponse.json(
         { error: 'Email service not configured' },
         { status: 500 }
@@ -57,7 +52,7 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       const error = await response.json();
-      console.error('❌ Resend API error:', error);
+      console.error('Resend API error:', error);
       return NextResponse.json(
         { error: 'Failed to send email: ' + (error.message || 'Unknown error') },
         { status: 500 }
@@ -65,11 +60,10 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
-    console.log('✅ Email sent successfully:', data);
     return NextResponse.json({ success: true, data });
 
   } catch (error) {
-    console.error('❌ Contact form error:', error);
+    console.error('Contact form error:', error);
     return NextResponse.json(
       { error: 'An error occurred while sending your message: ' + (error instanceof Error ? error.message : 'Unknown error') },
       { status: 500 }

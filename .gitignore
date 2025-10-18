@@ -71,6 +71,10 @@ yarn-error.log*
 .env*.local
 .dev.vars
 
+# developer documentation (not needed in repo)
+src/content/BLOG_MANAGEMENT.md
+docs/
+
 # vercel
 .vercel
 

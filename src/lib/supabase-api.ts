@@ -11,7 +11,6 @@ import { Project, BlogPost, SkillCategory, Experience } from '@/types'
  */
 export async function getProjects(): Promise<Project[]> {
   if (!supabase) {
-    console.warn('Supabase not initialized, returning empty array')
     return []
   }
 
@@ -22,7 +21,6 @@ export async function getProjects(): Promise<Project[]> {
 
   if (error) {
     console.error('Error fetching projects:', error.message)
-    // Return empty array if table doesn't exist yet
     return []
   }
 
@@ -45,7 +43,6 @@ export async function getProjects(): Promise<Project[]> {
  */
 export async function getBlogPosts(): Promise<BlogPost[]> {
   if (!supabase) {
-    console.warn('Supabase not initialized, returning empty array')
     return []
   }
 
@@ -56,7 +53,6 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
   if (error) {
     console.error('Error fetching blog posts:', error.message)
-    // Return empty array if table doesn't exist yet
     return []
   }
 
@@ -79,7 +75,6 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
  */
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   if (!supabase) {
-    console.warn('Supabase not initialized, returning null')
     return null
   }
 
@@ -91,10 +86,9 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 
   if (error) {
     if (error.code === 'PGRST116') {
-      return null // Not found
+      return null
     }
     console.error('Error fetching blog post:', error.message)
-    // Return null if table doesn't exist yet
     return null
   }
 
@@ -117,7 +111,6 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
  */
 export async function getSkills(): Promise<SkillCategory[]> {
   if (!supabase) {
-    console.warn('Supabase not initialized, returning empty array')
     return []
   }
 
@@ -128,7 +121,6 @@ export async function getSkills(): Promise<SkillCategory[]> {
 
   if (error) {
     console.error('Error fetching skills:', error.message)
-    // Return empty array if table doesn't exist yet
     return []
   }
 
@@ -156,7 +148,6 @@ export async function getSkills(): Promise<SkillCategory[]> {
  */
 export async function getExperiences(): Promise<Experience[]> {
   if (!supabase) {
-    console.warn('Supabase not initialized, returning empty array')
     return []
   }
 
@@ -167,7 +158,6 @@ export async function getExperiences(): Promise<Experience[]> {
 
   if (error) {
     console.error('Error fetching experiences:', error.message)
-    // Return empty array if table doesn't exist yet
     return []
   }
 
