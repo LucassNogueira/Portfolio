@@ -21,6 +21,15 @@ import { join } from 'path'
 // Import existing data
 const projectsData = [
   {
+    project: 0,
+    title: "FStop",
+    img: "/images/fstop.png",
+    creation: "Built a Formula1 companion app that users are able to register/login and select favorite drivers,tracks,teams, and compare drivers stats.",
+    tech: "ReactJS, FirebaseDB, TailwindCSS, Firebase Hosting, Sweetalert2, Axios.",
+    hosted: "https://fstop-nextjs.vercel.app/",
+    github: "https://github.com/LucassNogueira/Fstop",
+  },
+  {
     project: 1,
     title: "PogDog",
     img: "/images/1.png",
@@ -28,15 +37,6 @@ const projectsData = [
     tech: "Javascript, HTML, CSS, Express, Node.JS, and Axios.",
     hosted: "https://pogdog.vercel.app/",
     github: "https://github.com/LucassNogueira/pogdog",
-  },
-  {
-    project: 5,
-    title: "FStop",
-    img: "/images/fstop.png",
-    creation: "Built a Formula1 companion app that users are able to register/login and select favorite drivers,tracks,teams, and compare drivers stats.",
-    tech: "ReactJS, FirebaseDB, TailwindCSS, Firebase Hosting, Sweetalert2, Axios.",
-    hosted: "https://fstop-nextjs.vercel.app/",
-    github: "https://github.com/LucassNogueira/Fstop",
   },
   {
     project: 2,
