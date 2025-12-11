@@ -1,32 +1,32 @@
 #!/bin/bash
+# Build script with environment variable validation
 
-# Build script that ensures environment variables are available during build
-# This is needed because @cloudflare/next-on-pages uses vercel build
-# which doesn't automatically pick up Cloudflare environment variables
+echo "🔍 Checking build environment variables..."
 
-echo "🔧 Starting Cloudflare Pages build with environment variables..."
+# Export Cloudflare Pages environment variables if they exist
+export NEXT_PUBLIC_CLOUDFLARE=${NEXT_PUBLIC_CLOUDFLARE}
 
-# Export Cloudflare environment variables for the build process
-# These will be picked up by Next.js during the build
-export NEXT_PUBLIC_SUPABASE_URL="${NEXT_PUBLIC_SUPABASE_URL}"
-export NEXT_PUBLIC_SUPABASE_ANON_KEY="${NEXT_PUBLIC_SUPABASE_ANON_KEY}"
+# Export Vercel Postgres URL
+export POSTGRES_URL="${POSTGRES_URL}"
 
-# Verify environment variables are set
-if [ -z "$NEXT_PUBLIC_SUPABASE_URL" ]; then
-  echo "⚠️  WARNING: NEXT_PUBLIC_SUPABASE_URL is not set"
+# Check Postgres connection
+if [ -z "$POSTGRES_URL" ]; then
+  echo "⚠️  WARNING: POSTGRES_URL is not set"
+  echo "  Database features will be disabled during build"
 else
-  echo "✅ NEXT_PUBLIC_SUPABASE_URL is set"
+  echo "✅ POSTGRES_URL is set"
 fi
 
-if [ -z "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
-  echo "⚠️  WARNING: NEXT_PUBLIC_SUPABASE_ANON_KEY is not set"
+# Check Blob storage
+if [ -z "$BLOB_READ_WRITE_TOKEN" ] && [ -z "$NEXT_PUBLIC_BLOB_URL_PREFIX" ]; then
+  echo "⚠️  WARNING: Blob storage not configured"
+  echo "  Image URLs may not work correctly"
 else
-  echo "✅ NEXT_PUBLIC_SUPABASE_ANON_KEY is set"
+  echo "✅ Blob storage is configured"
 fi
 
-# Run the build
-echo "🚀 Running @cloudflare/next-on-pages build..."
+echo ""
+echo "🏗️  Starting build..."
 npx @cloudflare/next-on-pages
 
 echo "✨ Build complete!"
-

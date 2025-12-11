@@ -25,7 +25,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import { styled } from '@mui/material/styles'
 import { useThemeMode } from '@/lib/themeContext'
-import { getImageUrl } from '@/lib/supabase'
+import { getImageUrl } from '@/lib/storage'
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -193,7 +193,7 @@ const Header: React.FC = () => {
               />
             </Link>
           </LogoContainer>
-          
+
           <NavContainer>
             {navItems.map((item) => (
               isHomePage && item.href !== '/' ? (
