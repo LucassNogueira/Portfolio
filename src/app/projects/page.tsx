@@ -1,6 +1,5 @@
 'use client'
 
-import Projects from '@/components/Projects'
 import Footer from '@/components/Footer'
 import { Box, Button, Container, Grid, Card, CardContent, CardMedia, CardActions, Chip, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
@@ -102,9 +101,7 @@ export default function ProjectsPage() {
           </Link>
         </Container>
       </BackButtonContainer>
-      
-      <Projects />
-      
+
       {/* All Projects Section - Shows ALL projects */}
       <AllProjectsSection>
         <Container maxWidth="lg">
@@ -139,13 +136,13 @@ export default function ProjectsPage() {
                     </Box>
                   </CardContent>
                   <CardActions sx={{ padding: '16px', gap: '8px' }}>
-                    <ActionButton 
+                    <ActionButton
                       variant="contained"
                       onClick={() => window.open(project.hosted, '_blank', 'noopener,noreferrer')}
                     >
                       Live Demo
                     </ActionButton>
-                    <ActionButton 
+                    <ActionButton
                       variant="outlined"
                       onClick={() => window.open(project.github, '_blank', 'noopener,noreferrer')}
                     >
@@ -158,7 +155,7 @@ export default function ProjectsPage() {
           </Grid>
         </Container>
       </AllProjectsSection>
-      
+
       <Footer />
     </>
   )
