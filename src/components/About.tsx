@@ -135,24 +135,23 @@ const About: React.FC = () => {
           <SectionTitle variant="h2">
             About Me
           </SectionTitle>
-        <AboutContent>
-          <AboutText>
-            Hey, I&apos;m Lucas! I&apos;m a web engineer at Veryable in Dallas, building tools that help 
-            businesses manage their workforce more efficiently. I work mostly with React, TypeScript, 
-            and Next.js to create features that people actually use every day.
-          </AboutText>
-          <AboutText>
-            Before getting into tech, I ran eight restaurants for about ten years. It was chaotic, 
-            rewarding, and taught me a ton about solving real problems under pressure. That experience 
-            completely changed how I think about building software. Running those restaurants made me appreciate simple, reliable 
-            tools that just work when you need them. The same principles i apply to building software today!
-          </AboutText>
-          <AboutText>
-            I got into coding through DevMountain&apos;s bootcamp in 2022, and honestly haven&apos;t looked back. 
-            I love the puzzle-solving aspect of engineering and the satisfaction of shipping something 
-            that makes a difference. When I&apos;m not coding, you&apos;ll probably find me exploring Dallas, 
-            trying out new restaurants (old habits), or picking up yet an other new hobby! 
-          </AboutText>
+          <AboutContent>
+            <AboutText>
+              Howdy, I&apos;m Lucas! I&apos;m a web engineer based in Dallas, passionate about building tools that not only look good but function flawlessly. I work mostly with React, TypeScript,
+              and Next.js to turn complex ideas into clean, user friendly products.
+            </AboutText>
+            <AboutText>
+              Before getting into tech, I ran eight restaurants for about ten years. It was chaotic,
+              rewarding, and taught me a ton about solving real problems under pressure. That experience
+              completely changed how I think about building software. Running those restaurants made me appreciate simple, reliable
+              tools that just work when you need them. The same principles i apply to building software today!
+            </AboutText>
+            <AboutText>
+              I got into coding through DevMountain&apos;s bootcamp in 2022, and honestly haven&apos;t looked back.
+              I love the puzzle-solving aspect of engineering and the satisfaction of shipping something
+              that makes a difference. When I&apos;m not coding, you&apos;ll probably find me exploring Dallas,
+              trying out new restaurants (old habits), or picking up yet an other new hobby!
+            </AboutText>
           </AboutContent>
         </SectionHeader>
 

@@ -247,14 +247,14 @@ const Resume: React.FC = () => {
         </SectionHeader>
 
         <ResumeHeader>
-          <DownloadButton 
+          <DownloadButton
             variant="contained"
-            href="/Lucas%20Nogueira%20%20Software%20Developer%20Resume.pdf"
-            startIcon={ <DownloadIcon /> }
+            href="/Lucas_Nogueira_Resume_2026.pdf"
+            startIcon={<DownloadIcon />}
             rel="noopener noreferrer"
-            sx={ { textDecoration: 'none' } }
+            sx={{ textDecoration: 'none' }}
             // @ts-ignore - download attribute needed for file download
-            download="Lucas-Nogueira-Software-Developer-Resume.pdf"
+            download="Lucas_Nogueira_Resume_2026.pdf"
           >
             Download PDF
           </DownloadButton>
@@ -280,8 +280,8 @@ const Resume: React.FC = () => {
                             {iconName ? (
                               <StackIcon name={iconName} variant={mode} />
                             ) : (
-                              <Typography 
-                                sx={{ 
+                              <Typography
+                                sx={{
                                   fontSize: '24px',
                                   fontWeight: 700,
                                   color: 'primary.main',

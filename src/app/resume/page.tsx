@@ -36,19 +36,6 @@ export default function ResumePage() {
         </Container>
       </BackButtonContainer>
       <Resume />
-      {/* 
-        NOTE: You can add more detailed resume content here:
-        - Detailed job descriptions
-        - Project highlights for each role
-        - Education details (courses, GPA, honors)
-        - Certifications with dates and issuers
-        - Volunteer work
-        - Publications
-        - Speaking engagements
-        - Professional development courses
-        - Skill proficiency levels
-        - Language proficiency
-      */}
       <Footer />
     </>
   )
